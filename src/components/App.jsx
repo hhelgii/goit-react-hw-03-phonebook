@@ -5,7 +5,7 @@ import css from './app.module.css';
 import { FilterContact } from './filterContacts/FilterContact';
 import { nanoid } from 'nanoid';
 
-const STORAGE_KEY="contacts";
+const STORAGE_KEY = 'contacts';
 
 export class App extends React.Component {
   state = {
@@ -41,20 +41,18 @@ export class App extends React.Component {
     });
   };
 
-  componentDidMount(){
+  componentDidMount() {
     // зчитати з локал сторедж і zapysaty v contacts
-    const storageContacts=JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if(storageContacts){
-      this.setState({contacts:storageContacts})
+    const storageContacts = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (storageContacts) {
+      this.setState({ contacts: storageContacts });
     }
-    
   }
-  componentDidUpdate(prevState){
+  componentDidUpdate(prevState) {
     // перезаписати локалсторедж
-    if(prevState.contacts!==this.state.contacts){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts))
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state.contacts));
     }
-    
   }
 
   render() {
